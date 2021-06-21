@@ -1,0 +1,662 @@
+{
+	"info": {
+		"_postman_id": "c62c7ac9-36fa-4186-a76f-9f3723384179",
+		"name": "Challenge",
+		"description": "Suggested test path example:\n1. User A to place a bet\n2. Get all the bets\n3. Get user A's balance\n4. User B places a bet\n5. Get all the bets\n6. Get user A's balance again",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all the games",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/games",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"games"
+					]
+				},
+				"description": "Get all the games ordered by start date"
+			},
+			"response": [
+				{
+					"name": "Get all the games",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/games",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"games"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1141"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"475-w1FBffDn17cZX/jSjQ0CTds5XvQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 21 Jun 2021 20:51:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"startDateTime\": \"2020-09-05T01:00:13.000Z\",\n        \"gameId\": 54354545,\n        \"sport\": \"FOOTBALL\",\n        \"homeTeamId\": 67657657,\n        \"awayTeamId\": 23545435\n    },\n    {\n        \"startDateTime\": \"2020-09-27T01:00:13.000Z\",\n        \"gameId\": 948390284,\n        \"sport\": \"BASEBALL\",\n        \"homeTeamId\": 54353543,\n        \"awayTeamId\": 6547657\n    },\n    {\n        \"startDateTime\": \"2020-10-25T08:00:13.000Z\",\n        \"gameId\": 566436345,\n        \"sport\": \"FOOTBALL\",\n        \"homeTeamId\": 7697896,\n        \"awayTeamId\": 1241343\n    },\n    {\n        \"startDateTime\": \"2020-10-31T04:00:13.000Z\",\n        \"gameId\": 19098432,\n        \"sport\": \"BASKETBALL\",\n        \"homeTeamId\": 14324234,\n        \"awayTeamId\": 25765765\n    },\n    {\n        \"startDateTime\": \"2020-11-02T04:00:13.000Z\",\n        \"gameId\": 90809890,\n        \"sport\": \"BASKETBALL\",\n        \"homeTeamId\": 5345435,\n        \"awayTeamId\": 65765765\n    },\n    {\n        \"startDateTime\": \"2020-11-03T05:00:13.000Z\",\n        \"gameId\": 654657567,\n        \"sport\": \"BASEBALL\",\n        \"homeTeamId\": 3423423,\n        \"awayTeamId\": 75464565\n    },\n    {\n        \"startDateTime\": \"2020-11-05T04:00:13.000Z\",\n        \"gameId\": 983954353,\n        \"sport\": \"BASKETBALL\",\n        \"homeTeamId\": 124354543,\n        \"awayTeamId\": 7543543645\n    },\n    {\n        \"startDateTime\": \"2020-11-25T08:00:13.000Z\",\n        \"gameId\": 73254342,\n        \"sport\": \"FOOTBALL\",\n        \"homeTeamId\": 65475645,\n        \"awayTeamId\": 34234212\n    },\n    {\n        \"startDateTime\": \"2020-11-27T01:00:13.000Z\",\n        \"gameId\": 83435435,\n        \"sport\": \"BASEBALL\",\n        \"homeTeamId\": 8475934,\n        \"awayTeamId\": 2342423\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get all bets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/bets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bets"
+					]
+				},
+				"description": "Get all the bets ordered by creation date"
+			},
+			"response": [
+				{
+					"name": "Get all bets",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/bets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "642"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"282-in3DBw4o1hmeLkWatm8nydv4Ct4\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 21 Jun 2021 20:53:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"betId\": 2,\n        \"created\": \"2021-06-21T20:52:29.000Z\",\n        \"userA\": \"34n234nk3n4kjn23jnkn3\",\n        \"userATeam\": 65475645,\n        \"userB\": \"\",\n        \"userBTeam\": 0,\n        \"amount\": \"27.00\",\n        \"sport\": \"FOOTBALL\",\n        \"startDateTime\": \"2020-11-25T08:00:13.000Z\"\n    },\n    {\n        \"betId\": 1,\n        \"created\": \"2021-06-21T20:52:59.000Z\",\n        \"userA\": \"34n234nk3n4kjn23jnkn3\",\n        \"userATeam\": 65475645,\n        \"userB\": \"46jn45kj6n5kj6n\",\n        \"userBTeam\": 34234212,\n        \"amount\": \"27.00\",\n        \"sport\": \"FOOTBALL\",\n        \"startDateTime\": \"2020-11-25T08:00:13.000Z\"\n    },\n    {\n        \"betId\": 3,\n        \"created\": \"2021-06-21T20:53:18.000Z\",\n        \"userA\": \"s7d67svdf676ge324jb2\",\n        \"userATeam\": 65765765,\n        \"userB\": \"\",\n        \"userBTeam\": 0,\n        \"amount\": \"84.00\",\n        \"sport\": \"BASKETBALL\",\n        \"startDateTime\": \"2020-11-02T04:00:13.000Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "User A places a bet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"34n234nk3n4kjn23jnkn3\",\n    \"isHomeTeam\": \"true\",\n    \"amount\": 27,\n    \"gameId\": 73254342\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/bets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bets"
+					]
+				},
+				"description": "The user A places a bet. He can place as many bets as allowed by his balance. When other users place bets for the same game and the same amount, they will match sequentially each bet sequentially."
+			},
+			"response": [
+				{
+					"name": "User A places a bet",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"34n234nk3n4kjn23jnkn3\",\n    \"isHomeTeam\": \"true\",\n    \"amount\": 27,\n    \"gameId\": 73254342\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/bets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "190"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"be-TFUDAOFmqnjhWX51vNR1KakaHmE\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 21 Jun 2021 20:52:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"action\": \"place\",\n    \"details\": {\n        \"betId\": 1,\n        \"userA\": \"34n234nk3n4kjn23jnkn3\",\n        \"userATeam\": 65475645,\n        \"userB\": \"\",\n        \"userBTeam\": 0,\n        \"gameId\": 73254342,\n        \"created\": \"2021-06-21T20:52:08.000Z\",\n        \"amount\": \"27.00\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "User B places a bet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"46jn45kj6n5kj6n\",\n    \"isHomeTeam\": \"false\",\n    \"amount\": 27,\n    \"gameId\": 73254342\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/bets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bets"
+					]
+				},
+				"description": "The user B places a bet against the same game as user A. The amount is also the same, so, the first user that places a bid will get el bet placed. The 2nd user will get the bet matched."
+			},
+			"response": [
+				{
+					"name": "User B places a bet",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"46jn45kj6n5kj6n\",\n    \"isHomeTeam\": \"false\",\n    \"amount\": 27,\n    \"gameId\": 73254342\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/bets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "212"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d4-4hsoq9KN4gz1TlhIh8GicELMxPs\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 21 Jun 2021 20:52:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"action\": \"match\",\n    \"details\": {\n        \"betId\": 1,\n        \"userA\": \"34n234nk3n4kjn23jnkn3\",\n        \"userATeam\": 65475645,\n        \"userB\": \"46jn45kj6n5kj6n\",\n        \"userBTeam\": 34234212,\n        \"gameId\": 73254342,\n        \"created\": \"2021-06-21T20:52:59.000Z\",\n        \"amount\": \"27.00\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get User A balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/34n234nk3n4kjn23jnkn3/balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"34n234nk3n4kjn23jnkn3",
+						"balance"
+					]
+				},
+				"description": "Shows the actual balance (the one that can be spent for new bets), the placed balance (bets not yet matched), and the matched balance."
+			},
+			"response": []
+		},
+		{
+			"name": "Get User B balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/46jn45kj6n5kj6n/balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"46jn45kj6n5kj6n",
+						"balance"
+					]
+				},
+				"description": "Get the balance for the user B."
+			},
+			"response": []
+		},
+		{
+			"name": "User C places a bet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"s7d67svdf676ge324jb2\",\n    \"isHomeTeam\": \"false\",\n    \"amount\": 84,\n    \"gameId\": 90809890\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/bets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bets"
+					]
+				},
+				"description": "The user C places a bet on a game and amount different than User A and B."
+			},
+			"response": [
+				{
+					"name": "User C places a bet",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"s7d67svdf676ge324jb2\",\n    \"isHomeTeam\": \"false\",\n    \"amount\": 84,\n    \"gameId\": 90809890\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/bets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "189"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"bd-y1U4nIO0+ebbXjnpimzkwrO7DqI\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 21 Jun 2021 20:53:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"action\": \"place\",\n    \"details\": {\n        \"betId\": 3,\n        \"userA\": \"s7d67svdf676ge324jb2\",\n        \"userATeam\": 65765765,\n        \"userB\": \"\",\n        \"userBTeam\": 0,\n        \"gameId\": 90809890,\n        \"created\": \"2021-06-21T20:53:18.000Z\",\n        \"amount\": \"84.00\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "User D places a bet on invalid game",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"894u32423i4n32h43j4hj\",\n    \"isHomeTeam\": \"false\",\n    \"amount\": 84,\n    \"gameId\": 111111\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/bets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bets"
+					]
+				},
+				"description": "Trying to bet on an unknown gameId"
+			},
+			"response": [
+				{
+					"name": "User D places a bet on invalid game",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"894u32423i4n32h43j4hj\",\n    \"isHomeTeam\": \"false\",\n    \"amount\": 84,\n    \"gameId\": 111111\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/bets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "49"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"31-t11iDB7GOf5Q4Cb/mmhpu6hTq9I\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 21 Jun 2021 20:53:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 500,\n    \"reason\": \"Game info not available\"\n}"
+				}
+			]
+		},
+		{
+			"name": "User D places a bet with insufficient balance",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"894u32423i4n32h43j4hj\",\n    \"isHomeTeam\": \"false\",\n    \"amount\": 120,\n    \"gameId\": 73254342\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/bets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bets"
+					]
+				},
+				"description": "A bet in which the amount exceeds the balance."
+			},
+			"response": [
+				{
+					"name": "User D places a bet with insufficient balance",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"894u32423i4n32h43j4hj\",\n    \"isHomeTeam\": \"false\",\n    \"amount\": 120,\n    \"gameId\": 73254342\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/bets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3d-54BAYKzo0D6K1wy6O+X+Pl3PMUU\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 21 Jun 2021 20:53:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 401,\n    \"reason\": \"Not enough balance to place the bet\"\n}"
+				}
+			]
+		}
+	]
+}
