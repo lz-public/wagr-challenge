@@ -55,12 +55,14 @@ The way the database transactions are execute expect to handle technical failure
 create bets in a stored procedure, where the balance is effectively checked, decreased with the matched bet in an atomic transaction. The current way supports many users betting concurrently, but is not safe for a user sending multiple simultaneus bet creation requests (which is not what most users do).
 
 ## Endpoints
+
 ### Return list of all games ordered by game start time
 GET http://localhost:3000/games
 
 ### Create bet
 POST http://localhost:3000/bets
-BODY 
+BODY
+
 ´´´
 {
     "userId": "{userId}",
@@ -90,6 +92,7 @@ docker run --link wagr-challenge_mysqldb_1:mysqldb --net wagr-challenge_default 
 2. Open in your browser: http://localhost:8080/?server=mysqldb&username=root&db=mysql&select=db and log in with user *root* and password *r00t*
 
 3. With the prevoius link you should be viewing the `db` table inside the `mysql` database. You will see the core databases there. Clone a row and change the column data to:
+
 ````
 Host: %
 Db: bets
