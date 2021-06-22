@@ -35,7 +35,13 @@ docker run --link wagr-challenge_mysqldb_1:mysqldb --net wagr-challenge_default 
 Open your broser at http://localhost:8080/?server=mysqldb and enter the following login info: *user: wagr* / *pass: challenge*
 
 ## How it works
-This engine loads games and user data from external endpoints, into into a relational database (MySQL). As some of the games data is unstructured, the base field are stored in the database aas columns, while the unstructured data is stored in a json-type column. This helps us to keep the power of relational databases and the flexibility of document databases. For this example, the unstructured data is loaded but not used at all (maybe in the future we want to show more info abut the games). There's also a *bet* table to store the bets placed by the users. All the data is completely initialized each time the server is started. Once the data is loaded, all endpoints are available for consumption. 
+This engine loads games and user data from external endpoints, into into a relational database (MySQL). As some of the games data is unstructured, the base field are stored in the database aas columns, while the unstructured data is stored in a json-type column. This helps us to keep the power of relational databases and the flexibility of document databases. For this example, the unstructured data is loaded but not used at all (maybe in the future we want to show more info abut the games).
+
+There's also a *bet* table to store the bets placed by the users. The main endpoint is the one used to create a bet. When a user places a bet the column userA is allways completed and the column userB is empty. This means that when a row contains a value in userA but an empty value in userB, the bet has been placed but not matched with any other user's bet.
+
+When a user places a bet that matches any existing *placed* bet, this is, different user, same amount, same game and the opposite team, the userB column is filled. That way, any row that contains non-empty values in the columns userA and userB shows us that there's a matching bet between users.
+
+All the data is completely initialized each time the server is started. Once the data is loaded, all endpoints are available for consumption. 
 
 ## Business rules (requirement)
 This server covers the following busines rules:
@@ -54,6 +60,7 @@ The Postman collection contains all the steps in order, so that you can watch st
 The way the database transactions are executed expects to handle technical failures only, not concurreny. A better (production) approach would be to create bets in a stored procedure, where the balance is effectively checked, decreased with the matched bet in an atomic transaction. The current way supports many users betting concurrently, but is not safe for a user sending multiple simultaneus bet creation requests (which is not what most users do).
 
 ## Endpoints
+
 
 ### Return list of all games ordered by game start time
 GET http://localhost:3000/games
