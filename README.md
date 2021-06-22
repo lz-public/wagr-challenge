@@ -24,7 +24,7 @@ docker compose --build app
 
 > Note: On some systems that have docker/mysql volumes, the user may not be set up properly and you'll need to follow the troubleshooting instructions at the bottom of this document. 
 
-Once the server started, you can follow the endpoints documented in a [Postman collection](https://documenter.getpostman.com/view/11980407/Tzeah5gV) or install the collection to your Postman, available at https://github.com/lz-public/wagr-challenge/blob/main/wagr-challenge-postman.json
+Once the server started, you can follow the endpoints documented in the following live --> [Postman collection](https://documenter.getpostman.com/view/11980407/Tzeah5gV) <--, or install the collection to your Postman, available at https://github.com/lz-public/wagr-challenge/blob/main/wagr-challenge-postman.json
 
 Additionally, if you want to see what's happening in the databaase, you can use a small portable tool called Adminer:
 
