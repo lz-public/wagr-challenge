@@ -88,6 +88,9 @@ async function createBet(req) {
     let betId = (match.length == 1 && match[0].betId) ? match[0].betId : null;
     let action;
 
+    // @todo: this way it won't work as expected: we need to add the sql command that gets the betId the transaction instead
+    // of sending an array with updates/inserts only. The transaction() function can't be used here.
+
     let sqlCommands = [
       `UPDATE users SET balance=balance-${amount} WHERE userId='${userId}';`
     ];
