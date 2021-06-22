@@ -51,10 +51,10 @@ The Postman collection contains all the steps in order, so that you can watch st
 2. A unfulfilled bet blocks the user's balance. There's no way (in the current version) to recover that balance.
 
 ## Technical notes
-The way the database transactions are execute expect to handle technical failures. A better (production approach) would be to
-create bets in a stored procedure, where the balance is effectively checked, decreased with the matched bet in an atomic transaction. The current way supports many users betting concurrently, but is not safe for a user sending multiple simultaneus bet creation requests (which is not what most users do).
+The way the database transactions are executed expects to handle technical failures only, not concurreny. A better (production) approach would be to create bets in a stored procedure, where the balance is effectively checked, decreased with the matched bet in an atomic transaction. The current way supports many users betting concurrently, but is not safe for a user sending multiple simultaneus bet creation requests (which is not what most users do).
 
 ## Endpoints
+
 ### Return list of all games ordered by game start time
 GET http://localhost:3000/games
 
@@ -62,14 +62,14 @@ GET http://localhost:3000/games
 POST http://localhost:3000/bets
 BODY
 
-´´´
+```
 {
     "userId": "{userId}",
     "isHomeTeam": "true", // or "false" for the away team
     "amount": decimal number,
     "gameId": {gameId}
 }
-´´´
+```
 
 ### Return list of all bets ordered by created date
 GET http://localhost:3000/bets
