@@ -57,8 +57,7 @@ The Postman collection contains all the steps in order, so that you can watch st
 2. A unfulfilled bet blocks the user's balance. There's no way (in the current version) to recover that balance.
 
 ## Technical notes
-The way the database transactions are executed expects to handle technical failures only, not concurreny. A better (production) approach would be to create bets in a stored procedure, where the balance is decreased, a free betId is found  and the insert/update action is donein an atomic transaction. 
-> The current code needs a fix. The SQL command that gets the betId should run inside the transaction.
+Bets are created with a stored procedure that encloses a transaction to make sure that the balance is decreased, a free betId is found, and the insert/update action is executed in an atomic transaction. 
 
 ## Endpoints
 

@@ -84,43 +84,18 @@ async function createBet(req) {
 
   // place or match bets
   try {
-    let match = await db.query(`SELECT betId FROM bets WHERE gameId='${gameId}' AND userA<>'${userId}' AND userATeam='${betAgainstTeamId}' AND userA<>'${userId}' AND userB='' AND amount='${amount}' LIMIT 1`);
-    let betId = (match.length == 1 && match[0].betId) ? match[0].betId : null;
-    let action;
-
-    // @todo: this way it won't work as expected: we need to add the sql command that gets the betId the transaction instead
-    // of sending an array with updates/inserts only. The transaction() function can't be used here.
-
-    let sqlCommands = [
-      `UPDATE users SET balance=balance-${amount} WHERE userId='${userId}';`
-    ];
-    if (betId) {
-      sqlCommands.push(`UPDATE bets SET userB='${userId}', userBTeam='${betForTeamId}' WHERE betId='${betId}' AND gameId='${gameId}' AND userA<>'${userId}' AND userATeam='${betAgainstTeamId}' AND amount='${amount}' LIMIT 1`);
-      action = "match";
-    } else {
-      let createdDate = new Date().toISOString().substring(0, 19).replace('T', ' ');
-      sqlCommands.push(`INSERT INTO bets (userA, userATeam, userB, userBTeam, gameId, created, amount) VALUES('${userId}', '${betForTeamId}', '', '0', '${gameId}', '${createdDate}', '${amount}');`);
-      action = "place";
+    let betInfo = await db.query(`CALL getBet('${gameId}', '${userId}', '${betForTeamId}', '${betAgainstTeamId}', ${amount});`);
+    if (betInfo.length != 2 || !betInfo[0] || !betInfo[0][0] || (!betInfo[0][0].betId && !betInfo[0][0].error)) {
+      return { status: 500, reason: "The bet could not be placed", dataSets: betInfo.length, serverResponse: betInfo[0] };
     }
-    let rows = await db.transaction(sqlCommands);
-
-    if (!betId) {
-      if (rows[1] && rows[1][0].insertId) {
-        betId = rows[1][0].insertId;
-      } else {
-        return { status: 500, reason: "Can't get bet id" };
-      }
+    if (betInfo[0][0].error) {
+      return { status: 401, reason: betInfo[0][0].error };
     }
-
-    // verify -- reload latest data from db
-    let betInfo = await db.query(`SELECT * FROM bets WHERE betId='${betId}' LIMIT 1`);
-    if (betInfo.length != 1 || !betInfo[0].userA || !betInfo[0].amount) {
-       return { status: 500, reason: "Bet info unavailable" };
-    }
+    let action = (betInfo[0][0].userB != "") ? "matched" : "placed";
 
     return {
       action,
-      details: betInfo[0]
+      details: betInfo[0][0]
     };
   } catch (e) {
     throw new Error(e);
@@ -210,6 +185,49 @@ async function resetBetData() {
   return rows;
 }
 
+async function createDbFunctions() {
+  await db.query(`DROP PROCEDURE IF EXISTS getBet;`),
+  await db.query(`CREATE PROCEDURE getBet(
+    IN gameId BIGINT,
+    IN betUserId VARCHAR(50),
+    IN betForTeamId BIGINT,
+    IN betAgainstTeamId BIGINT,
+    IN betAmount DECIMAL(6,2)
+)
+BEGIN   
+    SELECT balance INTO @usersBalance FROM users WHERE userId=betUserId AND balance-betAmount>=0;
+    IF @usersBalance IS NOT NULL AND @usersBalance >= 0
+    THEN
+        START TRANSACTION;
+        SELECT betId INTO @betId
+            FROM bets 
+            WHERE gameId=gameId AND 
+                  userB='' AND 
+                  userA<>betUserId AND
+                  userATeam=betAgainstTeamId AND
+                  amount=betAmount
+            LIMIT 1;
+        IF @betId IS NOT NULL AND @betId > 0
+        THEN
+            UPDATE bets
+            SET userB=betUserId,
+                userBTeam=betForTeamId
+            WHERE betId=@betId 
+            LIMIT 1;
+        ELSE
+            INSERT INTO bets (userA, userATeam, userB, userBTeam, gameId, created, amount)
+            VALUES(betUserId, betForTeamId, '', '0', gameId, NOW(), betAmount);
+            SELECT LAST_INSERT_ID() INTO @betId;
+        END IF;
+        UPDATE users SET balance=balance-betAmount WHERE userId=betUserId;
+        COMMIT;
+        SELECT * from bets WHERE betId=@betId;
+    ELSE
+        SELECT 'INSUFFICIENT_BALANCE' AS error;
+    END IF;
+END;`);
+}
+
 module.exports = {
   showGames,
   getAllBets,
@@ -217,5 +235,6 @@ module.exports = {
   createBet,
   loadGamesData,
   loadUsersData,
-  resetBetData
+  resetBetData,
+  createDbFunctions
 };

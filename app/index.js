@@ -32,6 +32,7 @@ async function init() {
     await fn.resetBetData();
     await fn.loadGamesData();
     await fn.loadUsersData();
+    await fn.createDbFunctions();
   } catch(err) {
     throw new Error(err);
   }
